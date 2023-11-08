@@ -1,0 +1,56 @@
+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+/*
+ * Copyright 2021 NXP
+ */
+#include "imx8ulp-u-boot.dtsi"
+
+/ {
+	dsi_host: dsi-host {
+		compatible = "northwest,mipi-dsi";
+		status = "okay";
+	};
+};
+
+&pinctrl_lpuart5 {
+	u-boot,dm-spl;
+};
+
+&lpuart5 {
+	u-boot,dm-spl;
+};
+
+&pinctrl_lpuart7 {
+	u-boot,dm-spl;
+};
+
+&lpuart7 {
+	u-boot,dm-spl;
+};
+
+&usdhc0 {
+	u-boot,dm-spl;
+	mmc-hs400-1_8v;
+	mmc-hs400-enhanced-strobe;
+};
+
+&pinctrl_usdhc0 {
+	u-boot,dm-spl;
+};
+
+&lpi2c0 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	clock-frequency = <100000>;
+	status = "okay";
+
+	pcal6416: gpio@20 {
+		compatible = "ti,tca6416";
+		reg = <0x20>;
+		gpio-controller;
+		#gpio-cells = <2>;
+	};
+};
+
+&dsi {
+	data-lanes-num = <4>;
+};
